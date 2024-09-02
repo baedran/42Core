@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obadran <obadran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 15:22:06 by obadran           #+#    #+#             */
-/*   Updated: 2024/09/02 15:22:07 by obadran          ###   ########.fr       */
+/*   Created: 2024/06/27 04:57:07 by obadran           #+#    #+#             */
+/*   Updated: 2024/06/27 05:01:10 by obadran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main(int argc, char ** argv)
+#include "libft.h"
+
+char	*ft_strchr(char const *s, int c)
 {
-	if(argc > 2)
-	{	
-		int i = 0;
-		
-		int num = atoi(argv[i]);
-		i++;
-	}
-
-	if(argc == 2)
+	while (*s)
 	{
-		 int i = 0;
-
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
 	}
+	if (*s == (char)c)
+		return ((char *)s);
+	else
+		return (NULL);
 }

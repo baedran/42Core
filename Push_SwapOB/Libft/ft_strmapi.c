@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obadran <obadran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 15:22:06 by obadran           #+#    #+#             */
-/*   Updated: 2024/09/02 15:22:07 by obadran          ###   ########.fr       */
+/*   Created: 2024/06/27 04:56:32 by obadran           #+#    #+#             */
+/*   Updated: 2024/06/27 05:01:10 by obadran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main(int argc, char ** argv)
+#include "libft.h"
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	if(argc > 2)
-	{	
-		int i = 0;
-		
-		int num = atoi(argv[i]);
+	char			*str;
+	unsigned int	i;
+
+	str = ft_strdup(s);
+	if (!str || !f || !s)
+		return ((char *) NULL);
+	i = 0;
+	while (str[i])
+	{
+		str[i] = f(i, str[i]);
 		i++;
 	}
-
-	if(argc == 2)
-	{
-		 int i = 0;
-
-	}
+	return (str);
 }

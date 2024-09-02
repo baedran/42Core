@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obadran <obadran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 15:22:06 by obadran           #+#    #+#             */
-/*   Updated: 2024/09/02 15:22:07 by obadran          ###   ########.fr       */
+/*   Created: 2024/06/27 04:58:38 by obadran           #+#    #+#             */
+/*   Updated: 2024/06/27 05:01:10 by obadran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main(int argc, char ** argv)
+#include "libft.h"
+
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if(argc > 2)
-	{	
-		int i = 0;
-		
-		int num = atoi(argv[i]);
-		i++;
-	}
+	t_list	*list;
+	t_list	*node;
+	void	*set;
 
-	if(argc == 2)
+	if (!lst || !f || !del)
+		return (NULL);
+	list = NULL;
+	while (lst)
 	{
-		 int i = 0;
-
+		set = f(lst->content);
+		node = ft_lstnew(set);
+		if (!node)
+		{
+			del(set);
+			ft_lstclear(&list, (*del));
+			return (list);
+		}
+		ft_lstadd_back(&list, node);
+		lst = lst -> next;
 	}
+	return (list);
 }

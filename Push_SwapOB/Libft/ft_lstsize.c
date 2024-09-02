@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obadran <obadran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 15:22:06 by obadran           #+#    #+#             */
-/*   Updated: 2024/09/02 15:22:07 by obadran          ###   ########.fr       */
+/*   Created: 2024/06/27 04:58:26 by obadran           #+#    #+#             */
+/*   Updated: 2024/06/27 05:01:10 by obadran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main(int argc, char ** argv)
+#include "libft.h"
+
+int	ft_lstsize(t_list *lst)
 {
-	if(argc > 2)
-	{	
-		int i = 0;
-		
-		int num = atoi(argv[i]);
-		i++;
-	}
+	int	count;
 
-	if(argc == 2)
+	count = 0;
+	while (lst)
 	{
-		 int i = 0;
-
+		count++;
+		lst = lst -> next;
 	}
+	return (count);
 }

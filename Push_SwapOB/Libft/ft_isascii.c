@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obadran <obadran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 15:22:06 by obadran           #+#    #+#             */
-/*   Updated: 2024/09/02 15:22:07 by obadran          ###   ########.fr       */
+/*   Created: 2024/06/27 04:59:56 by obadran           #+#    #+#             */
+/*   Updated: 2024/06/27 05:01:10 by obadran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main(int argc, char ** argv)
+#include "libft.h"
+
+int	ft_isascii(int c)
 {
-	if(argc > 2)
-	{	
-		int i = 0;
-		
-		int num = atoi(argv[i]);
-		i++;
-	}
-
-	if(argc == 2)
-	{
-		 int i = 0;
-
-	}
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }

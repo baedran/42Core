@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obadran <obadran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 15:22:06 by obadran           #+#    #+#             */
-/*   Updated: 2024/09/02 15:22:07 by obadran          ###   ########.fr       */
+/*   Created: 2024/06/27 04:56:49 by obadran           #+#    #+#             */
+/*   Updated: 2024/06/27 05:01:10 by obadran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main(int argc, char ** argv)
+#include "libft.h"
+
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	if(argc > 2)
-	{	
-		int i = 0;
-		
-		int num = atoi(argv[i]);
+	unsigned int	d;
+	unsigned int	i;
+	unsigned int	s;
+
+	d = 0;
+	i = 0;
+	s = 0;
+	while (dest[d] != '\0')
+		d++;
+	while (src[s] != '\0')
+		s++;
+	if (size <= d)
+		s += size;
+	else
+		s += d;
+	while (src[i] != '\0' && (d + 1) < size)
+	{
+		dest[d] = src[i];
+		d++;
 		i++;
 	}
-
-	if(argc == 2)
-	{
-		 int i = 0;
-
-	}
+	dest[d] = '\0';
+	return (s);
 }
