@@ -1,0 +1,13 @@
+set of integer values
+2 stacks
+set of instructions of manipulate the stacks named a (should contain an amount of pos and neg numbers) and b(must be empty)
+
+algorithm complexity:
+-->time complexity : amount of time needed for a problem to be solved
+-->space complexity (memory): ammount of memory needed for a problem to be solved. 
+
+
+to do Push Swap: choose chained lists or tables
+
+
+allowed: read, write, malloc, free, exit
