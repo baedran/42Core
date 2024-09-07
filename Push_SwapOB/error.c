@@ -6,87 +6,80 @@
 /*   By: obadran <obadran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 15:34:51 by obadran           #+#    #+#             */
-/*   Updated: 2024/09/02 16:41:44 by obadran          ###   ########.fr       */
+/*   Updated: 2024/09/07 00:44:42 by obadran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int is_valid_integer(char* str)
+int	ft_isdigit(int c)
 {
-	while(*str == ' ' || *str == '\t')
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
+int	is_valid_integer(char *str)
+{
+	while (*str == ' ' || *str == '\t')
 	{
-		*str++;
+		str++;
 	}
-	if(*str == '+' || *str == '-')
+	if (*str == '+' || *str == '-')
 	{
-			*str++;
+		str++;
 	}
-	if(*str == '\0')
-		return 0;
-	
-	while(*str)
+	if (*str == '\0')
+		return (0);
+	while (*str)
 	{
-		if(!ft_isdigit(*str))
+		if (!ft_isdigit(*str))
 		{
 			ft_printf("Error\n");
-			return 0;
+			return (0);
 		}
 		str++;
 	}
-
-	return 1;
+	return (1);
 }
 
-/* testing; 
-#include <stdio.h>
-
-int main() {
-    char *test1 = "42";
-    char *test2 = "   -123";
-    char *test3 = "+456";
-    char *test4 = "123abc";
-    char *test5 = "+";
-    char *test6 = "  ";
-
-    printf("Test 1: %d\n", is_valid_integer(test1)); // Should print 1
-    printf("Test 2: %d\n", is_valid_integer(test2)); // Should print 1
-    printf("Test 3: %d\n", is_valid_integer(test3)); // Should print 1
-    printf("Test 4: %d\n", is_valid_integer(test4)); // Should print 0
-    printf("Test 5: %d\n", is_valid_integer(test5)); // Should print 0
-    printf("Test 6: %d\n", is_valid_integer(test6)); // Should print 0
-
-    return 0;
-}
-*/
-
-int in_range(int num)
+int	in_range(int num)
 {
-	int int_max = 2147483647;
-	int int_min = -2147483648;
+	int	int_max;
+	int	int_min;
 
+	int_max = 2147483647;
+	int_min = -2147483648;
 	return (num >= int_min && num <= int_max);
 }
 
-
-int is_duplicate(int *numbers, int size)
+int is_duplicate(t_node *stack)
 {
-	int i = 0; 
-	while (i < size)
+    t_node *current = stack;
+    t_node *other;
+
+    while (current)
 	{
-		int j = i + 1;
-
-		while(j < size)
+        other = current->next;
+        while (other)
 		{
-			if(numbers[i] == numbers[j])
-			{
-				ft_printf("Error\n");
-				return 1;
-			}
+            if (current->num == other->num)
+                return 1;  // Duplicate found
+            other = other->next;
+        }
+        current = current->next;
+    }
+    return 0;  // No duplicates
+}
 
-			j++;
-		}
-		i++;
-	}
-	return 0;
+
+void free_stack(t_node **stack) {
+    t_node *temp;
+
+    while (*stack) {
+        temp = *stack;
+        *stack = (*stack)->next;
+        free(temp);
+    }
+    *stack = NULL;
 }
