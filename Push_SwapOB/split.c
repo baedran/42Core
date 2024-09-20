@@ -6,7 +6,7 @@
 /*   By: obadran <obadran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 21:24:02 by obadran           #+#    #+#             */
-/*   Updated: 2024/09/07 13:56:04 by obadran          ###   ########.fr       */
+/*   Updated: 2024/09/11 21:57:35 by obadran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,6 @@ static char	*get_next_word(char *s, char c) //Define a function that returns the
 	return (next_word);
 }
 
-static void	free_all(char **result, int words)
-{
-	int i = 0;
-	while (i < words)
-	{
-		free(result[i]);
-		i++;
-	}
-	free(result);
-}
 
 
 char **split(char *s, char c) //Define a function that returns the substrings in a string seperated by a delimiter
@@ -81,8 +71,9 @@ char **split(char *s, char c) //Define a function that returns the substrings in
 
 	i = 0;
 	words_count = count_words(s, c);
-	if (!words_count) //Check for `0` words
-		exit(1);
+	if (words_count == 0) //Check if the string is empty
+		return (NULL);
+		
 	result_array = malloc(sizeof(char *) * (size_t)(words_count + 2)); //Allocate memory for the result_array based on the number of words (words_count) plus two additional slots to account for the null terminator at the end of the last string, and to null terminate the entire array
 	if (!result_array) //Check for unsuccessful memory allocation
 		return (NULL);
@@ -91,11 +82,8 @@ char **split(char *s, char c) //Define a function that returns the substrings in
 		if (i == 0) //Check if the first character of the input string is the delimiter
 		{
 			result_array[i] = malloc(sizeof(char)); //Allocate memory for an empty string (a single null terminator)
-			if (!result_array[i]) ////Check for unsuccessful memory allocation
-				{
-					free_all(result_array, i);
+			if (!result_array[i]) ////Check for unsuccessful memory allocation					 
 					return (NULL);
-				}
 			result_array[i++][0] = '\0'; //Include in the result array as distinct elements
 			continue ;
 		}
@@ -104,6 +92,7 @@ char **split(char *s, char c) //Define a function that returns the substrings in
 	result_array[i] = NULL; //Properly null terminate the array
 	return (result_array);
 }
+
 
 void free_args(char **args)
 {

@@ -6,69 +6,44 @@
 /*   By: obadran <obadran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 22:12:19 by obadran           #+#    #+#             */
-/*   Updated: 2024/09/07 16:14:29 by obadran          ###   ########.fr       */
+/*   Updated: 2024/09/11 17:48:56 by obadran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ra(t_node **stack_a, bool print)
+static void	rotate(t_node **stack)
 {
-	if(!(*stack_a) || ((*stack_a)->next))
-	{
-		return;	
-	}
+	t_node		*last_node;
 
-	t_node *first = *stack_a;
-	t_node *last = *stack_a;
+	if (!*stack || !(*stack)->next)
+		return ;
+	last_node = find_last_node(*stack);
+	last_node->next = *stack;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	last_node->next->prev = last_node;
+	last_node->next->next = NULL;
+}
 
-	*stack_a = (*stack_a)->next;
-	(*stack_a) ->prev = NULL;
-
-	//traverse to the last node;
-	
-	while(last->next)
-	{
-		last = last->next;
-	}
-	
-	last->next = first;
-	first->prev = last;
-	first->next = NULL;
-	if(print)
+void	ra(t_node **a, bool print)
+{
+	rotate(a);
+	if (!print)
 		ft_printf("ra\n");
 }
 
-void rb(t_node **stack_b, bool print)
+void	rb(t_node **b, bool checker)
 {
-	if(!(*stack_b) || ((*stack_b)->next))
-	{
-		return;	
-	}
-
-	t_node *first = *stack_b;
-	t_node *last = *stack_b;
-
-	*stack_b = (*stack_b)->next;
-	(*stack_b) ->prev = NULL;
-
-	//traverse to the last node;
-	
-	while(last->next)
-	{
-		last = last->next;
-	}
-	
-	last->next = first;
-	first->prev = last;
-	first->next = NULL;
-	
-	if(print)
+	rotate(b);
+	if (!checker)
 		ft_printf("rb\n");
 }
 
-void rr(t_node **stack_a, t_node **stack_b)
+void	rr(t_node **a, t_node **b, bool print)
 {
-	ra(stack_a, false);
-	rb(stack_b, false);
+	rotate(a);
+	rotate(b);
+	if (!print)
+		ft_printf("rr\n");
 }
