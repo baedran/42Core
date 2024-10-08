@@ -6,7 +6,7 @@
 /*   By: obadran <obadran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 15:44:38 by obadran           #+#    #+#             */
-/*   Updated: 2024/09/20 13:46:47 by obadran          ###   ########.fr       */
+/*   Updated: 2024/10/08 11:08:28 by obadran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	append_node(t_node **stack, int nbr)
 		node->prev = last_node;
 	}
 }
-	
-void create_stack(t_node **a, char **argv)
+
+void	create_stack(t_node **a, char **argv)
 {
 	long	num;
 	int		i;
@@ -72,9 +72,9 @@ void create_stack(t_node **a, char **argv)
 		if (is_number(argv[i]))
 			error_free(a);
 		num = ft_atol(*argv);
-		if(num < INT_MIN || num > INT_MAX)
+		if (num < INT_MIN || num > INT_MAX)
 			error_free(a);
-		if(error_duplicate(*a, (int)num))
+		if (error_duplicate(*a, (int)num))
 			error_free(a);
 		append_node(a, (int)num);
 		argv++;

@@ -6,13 +6,11 @@
 /*   By: obadran <obadran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 21:46:11 by obadran           #+#    #+#             */
-/*   Updated: 2024/09/11 21:47:05 by obadran          ###   ########.fr       */
+/*   Updated: 2024/10/08 11:08:58 by obadran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-
 
 static void	rotate_both(t_node **a, t_node **b, t_node *cheapest_node)
 {

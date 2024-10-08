@@ -6,7 +6,7 @@
 /*   By: obadran <obadran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 13:27:31 by obadran           #+#    #+#             */
-/*   Updated: 2024/09/11 17:42:21 by obadran          ###   ########.fr       */
+/*   Updated: 2024/10/08 11:02:26 by obadran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,3 @@ void	pb(t_node **b, t_node **a, bool print)
 	if (!print)
 		ft_printf("pb\n");
 }
-

@@ -6,7 +6,7 @@
 /*   By: obadran <obadran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 22:25:05 by obadran           #+#    #+#             */
-/*   Updated: 2024/09/20 11:56:39 by obadran          ###   ########.fr       */
+/*   Updated: 2024/10/08 11:05:40 by obadran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,23 +48,23 @@ void	rrr(t_node **a, t_node **b, bool print)
 		ft_printf("rrr\n");
 }
 
-void finish_rotation(t_node **stack, t_node *top_node, char stack_name)
+void	finish_rotation(t_node **stack, t_node *top_node, char stack_name)
 {
-    while (*stack != top_node)
-    {
-        if (top_node->above_median)
-        {
-            if (stack_name == 'a')
-                ra(stack, false);
-            else
-                rb(stack, false);
-        }
-        else
-        {
-            if (stack_name == 'a')
-                rra(stack, false);
-            else
-                rrb(stack, false);
-        }
-    }
+	while (*stack != top_node)
+	{
+		if (top_node->above_median)
+		{
+			if (stack_name == 'a')
+				ra(stack, false);
+			else
+				rb(stack, false);
+		}
+		else
+		{
+			if (stack_name == 'a')
+				rra(stack, false);
+			else
+				rrb(stack, false);
+		}
+	}
 }

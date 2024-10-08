@@ -6,7 +6,7 @@
 /*   By: obadran <obadran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 23:01:53 by obadran           #+#    #+#             */
-/*   Updated: 2024/09/20 11:56:22 by obadran          ###   ########.fr       */
+/*   Updated: 2024/10/08 11:44:20 by obadran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_node	*find_min(t_node *node)
 	}
 	return (min_node);
 }
+
 bool	stack_sorted(t_node *node)
 {
 	if (!node)
@@ -75,34 +76,15 @@ t_node	*find_max(t_node *node)
 
 int	stack_size(t_node *stack)
 {
-    int	size;
-    t_node *current;
-	
+	int		size;
+	t_node	*current;
+
 	size = 0;
 	current = stack;
-    while (current != NULL)
+	while (current != NULL)
 	{
-        size++;
-        current = current->next;
-    }
-
-    return (size);
-}
-
-// In node_a_init.c or stack_operations.c
-t_node *get_cheapest(t_node *stack)
-{
-    t_node *cheapest = NULL;
-    long min_cost = LONG_MAX;
-
-    while (stack)
-    {
-        if (stack->push_price < min_cost)
-        {
-            min_cost = stack->push_price;
-            cheapest = stack;
-        }
-        stack = stack->next;
-    }
-    return cheapest;
+		size++;
+		current = current->next;
+	}
+	return (size);
 }
